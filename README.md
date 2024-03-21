@@ -106,10 +106,6 @@ Once the request is authenticated and authorized, Kubernetes inspects the manife
 
 Finally controllers run as background reconcilation loops that constantly monitor the state of things. If the *observed state* varies from *desired state*, Kubernetes performs the tasks are necessary to reconcile the issue.
 
-
-
-
-
-
+## Pods
 
 written by @jainil15
