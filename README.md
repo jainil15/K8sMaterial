@@ -1,4 +1,4 @@
-<span style="font-family: '0xProto Nerd Font propo';">
+<span style="font-family: 'Lucida console';">
 
 # KUBERNETES
 ## Control Plane
