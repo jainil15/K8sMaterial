@@ -74,5 +74,42 @@ The cluster's DNS service has a static IP address that is hard-coded into every 
 
 Cluster DNS is based on CoreDNS project.
 
+## Packaging Application
+An application needs to tick a few boxes to run on a Kubernetes cluster. These include:
+1. Packaged as a container
+2. Wrapped in a pod
+3. Deployed via a declarative manifest file
+
+We need to write microservices, then build it into container image and store it in registry. At this point, the application service is *containerized*.
+
+Next you need to define a Kubernetes Pod to run the containerized application. At the kind of high level we're at, a Pod is just a wrapper that allows a container to run on a cluster. Once you have defined the Pod, you are ready to deploy the app to Kubernetes.
+
+The most common controller is the Deployment. It offers scalability, self-healing, and rolling updates for stateless apps. You define Deployments in YAML manifest files and specify things how many replicas to deploy and how to perform updates.
+
+Once everything is deployed in the Deployment YAML file, you can use the Kubernetes command-line tool to post it to API server as the desired state of the application and Kubernetes will implement it.
+
+## The declarative model and desired state
+The declarative model and the concept of desired state are the very heart of Kubernetes.
+
+In Kubernetes, the declarative model works like this.
+1. Declare the desired state of an applicaiton microservice in a manifest file
+2. Post it to the API server
+3. Kubernetes stores it in the cluster store as the application's desired state
+4. Kubernetes implements the desired state on the cluster
+5. A controller makes sure the observed state of the application doesn't vary from the desired state
+
+Manifest files are written in simple YAML and tell Kubernetes what an application should look like. This is called desired state. It includes things such as which image to use, how many replicas to run, which network ports to listen on, and how to perform updates.
+
+Once manifest is created, post it to the API server. The easiest way to do this is with `kubectl` command line utility. This sends the manifest to the control plane as an HTTP POST, usually on port 443.
+
+Once the request is authenticated and authorized, Kubernetes inspects the manifest, it identifies which controller to send it to (Deployment server), and records the config in the cluster store nodes where the kubelt co-ordinates the hard work of pulling images, starting containers, attaching networks, and starting application processes.
+
+Finally controllers run as background reconcilation loops that constantly monitor the state of things. If the *observed state* varies from *desired state*, Kubernetes performs the tasks are necessary to reconcile the issue.
+
+
+
+
+
+
 
 written by @jainil15
