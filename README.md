@@ -68,6 +68,11 @@ Kubernetes is dropping Docker as container runtime. This is because docker is bl
 This runs on every node and is responsible for the local cluster networking. It ensures that node gets its own unique IP address and implementes local iptables of IPVS rules to handle routing and load balancing of traffic on the Pod network.
 
 ## Kubernetes DNS
+Every kubermetes cluster has an internal DNS service that is vital to service discovery.
+
+The cluster's DNS service has a static IP address that is hard-coded into every Pod on the cluster. This ensures that every container and Pod can locate it and use it for discovery. Service registration is also automatic. This means apps don't need to be coded with the intelligence to register with the Kubernetes service discovery.
+
+Cluster DNS is based on CoreDNS project.
 
 
 written by @jainil15
