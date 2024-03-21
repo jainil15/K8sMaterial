@@ -1,5 +1,3 @@
-<span style="font-family: 'Lucida console';">
-
 # KUBERNETES
 ## Control Plane
 A kubernetes control plane node is a server running collection of system services that make up the control plane of the cluster.
@@ -40,4 +38,12 @@ The scheduler is not responsible of running tasks. just picking the nodes to run
 ### The cloud controller manager
 If you are running your cluster  on a supported public cloud platform (AWS, AZURE), then control plane will be running the cloud control manager. Its job is to facilitate intergration with cloud services such as instances, lb, storage, etc.
 
-</span>
+## Worker nodes
+Nodes are servers that are the workers of the kubernetes cluster.
+At high level they do three things:
+1. Watch the API server for the new work assignments.
+2. Execute work assignments.
+3. Report back to the control plane.
+
+
+written by @jainil15
