@@ -1,8 +1,5 @@
-<style>
-  * {
-    font-family: "0xProto Nerd Font propo"
-  }
-</style>
+<span style="font-family: '0xProto Nerd Font propo';">
+
 # KUBERNETES
 ## Control Plane
 A kubernetes control plane node is a server running collection of system services that make up the control plane of the cluster.
@@ -43,3 +40,4 @@ The scheduler is not responsible of running tasks. just picking the nodes to run
 ### The cloud controller manager
 If you are running your cluster  on a supported public cloud platform (AWS, AZURE), then control plane will be running the cloud control manager. Its job is to facilitate intergration with cloud services such as instances, lb, storage, etc.
 
+</span>
