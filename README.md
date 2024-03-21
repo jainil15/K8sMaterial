@@ -45,5 +45,27 @@ At high level they do three things:
 2. Execute work assignments.
 3. Report back to the control plane.
 
+### Kubelet
+The kubelet is main Kubernetes agent and run on every cluster node.
+
+When you join a node to cluster, the process installs the kubelet, which is then responsible for registering with cluster. 
+This process  registers the node's CPU, memory and storage into wider cluster pool.
+
+One of the main jobs of the kubelet is to watch the API server for new work tasks.
+
+If the kubelet can't run the task, it reports it back to the control plane and lets the control plane decide what action to take.
+
+### Container runtime
+The kubelet needs a container runtime to perform container related tasks - things like pulling images and starting and stopping containers.
+
+Kubernetes has moved to plugin model called **Container Runtime Interface**. At high level the CRI masks the internal machinery of Kubernetes and expose clean documented interface for 3rd Party container runtimes to plug into.
+
+Kubernetes is dropping Docker as container runtime. This is because docker is bloated and doesn't support the CRI. **containerd** is replacing it as the most common container runtime for kubernetes.
+
+### Kube-proxy
+This runs on every node and is responsible for the local cluster networking. It ensures that node gets its own unique IP address and implementes local iptables of IPVS rules to handle routing and load balancing of traffic on the Pod network.
+
+## Kubernetes DNS
+
 
 written by @jainil15
