@@ -5,9 +5,11 @@ A kubernetes control plane node is a server running collection of system service
 The simplest setup runs one control plane node. For production multiple control plane nodes configured for HA is vital (3 or 5).
 ### Api service
 The API server is the Grand central of Kubernetes. **All communication between all components, must go through the API server.**
+
 It exposes a RESTful API that you POST YAML configuration files to over HTTPS. These YAML files, which we sometimes call *manifests*, describe the desired state of application. The desired state includes things like which container image to use, which port to expose, how many Pod replicas to run.
 
 All request to the API server are subject to authentication and authorization checks.
+
 ### The cluster store
 The cluster store is only stateful part of the control plane and persistently stores the entire configuration and state of the cluster. As such, it's vital component of every Kubernetes cluster - no cluster store, no cluster.
 
